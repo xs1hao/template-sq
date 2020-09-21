@@ -1,0 +1,30 @@
+.todo__component-container {
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-container {
+  /* margin: auto; */
+}
+
+#todo__list,
+#done__list{
+  width: 50%;
+}
+
+.list__item {
+  border: black solid 1px;
+  max-width: 250px;
+  text-align: center;
+  margin-top: -1px;
+}
+
+.list__title {
+  font-weight: bold;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
