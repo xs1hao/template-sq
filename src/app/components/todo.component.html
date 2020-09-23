@@ -1,15 +1,8 @@
 <div cdkDropListGroup class="todo__component-container">
 
-  <div cdkDropList id="todo__list" class="list-container" [cdkDropListData]="todoList" (cdkDropListDropped)="drop($event)">
-    <h2 class="list__title">TODO</h2>
-    <div cdkDrag class="list__item" [cdkDragData]="todoItem" *ngFor="let todoItem of todoList">{{todoItem}}</div>
-  </div>
+  <app-left-wrap [todoList]="todoList" (drop)="drop($event)" [listOfData]="listOfData1"></app-left-wrap>
 
-  <div cdkDropList id="done__list" class="list-container" [cdkDropListData]="doneList" (cdkDropListDropped)="drop($event)">
-    <h2 class="list__title">Done</h2>
-    <div cdkDrag class="list__item" [cdkDragData]="doneItem" *ngFor="let doneItem of doneList">
-      {{doneItem}}
-    </div>
-  </div>
+  <app-right-wrap [doneList]="doneList" (drop)="drop($event)" [listOfData]="listOfData2"></app-right-wrap>
+
 </div>
 
