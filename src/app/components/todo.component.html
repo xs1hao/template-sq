@@ -1,8 +1,12 @@
 <div cdkDropListGroup class="todo__component-container">
 
-  <app-left-wrap [todoList]="todoList" (drop)="drop($event)" [listOfData]="listOfData1"></app-left-wrap>
+  <div>
+    <app-left-wrap [todoList]="todoList" (drop)="drop($event)" [listOfData]="listOfData1"></app-left-wrap>
+  </div>
+  <div>
+      <app-right-wrap [doneList]="doneList" (drop)="drop($event)" [listOfData]="listOfData2"></app-right-wrap>
+  </div>
 
-  <app-right-wrap [doneList]="doneList" (drop)="drop($event)" [listOfData]="listOfData2"></app-right-wrap>
 
 </div>
 

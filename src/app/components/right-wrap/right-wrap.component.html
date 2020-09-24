@@ -1,24 +1,32 @@
-<div cdkDropList id="done__list" class="list-container" [cdkDropListData]="doneList" (cdkDropListDropped)="innerDrop($event)">
+<!-- <div cdkDropList id="done__list" class="list-container" [cdkDropListData]="doneList" (cdkDropListDropped)="innerDrop($event)">
   <h2 class="list__title">Done</h2>
   <div cdkDrag class="list__item" [cdkDragData]="doneItem" *ngFor="let doneItem of doneList">
     {{doneItem}}
   </div>
+</div> -->
+<div>
+  <nz-table #basicTable [nzShowPagination]="false" [nzData]="listOfData">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>地址</th>
+      </tr>
+    </thead>
+    <tbody id="right" cdkDropList
+      cdkDropListConnectedTo="left"
+      [cdkDropListData]="listOfData"
+      (cdkDropListDropped)="innerDrop($event)">
+      <tr *ngFor="let data of basicTable.data" [cdkDragData]="data" cdkDrag>
+        <td>{{ data.name }}</td>
+        <td>{{ data.age }}</td>
+        <td>{{ data.address }}</td>
+      </tr>
+      <tr *ngIf="basicTable.data.length == 0" cdkDrag>
+        <div style="height: 40px;background-color: #23c6c8;width: 100%;"></div>
+      </tr>
+    </tbody>
+  </nz-table>
 </div>
 
-<nz-table #basicTable [nzShowPagination]="false" [nzData]="listOfData">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Address</th>
-    </tr>
-  </thead>
-  <tbody cdkDropList   [cdkDropListData]="listOfData" (cdkDropListDropped)="innerDrop($event)">
-    <tr cdkDrag *ngFor="let data of basicTable.data" [cdkDragData]="data">
-      <td>{{ data.name }}</td>
-      <td>{{ data.age }}</td>
-      <td>{{ data.address }}</td>
-    </tr>
-  </tbody>
-</nz-table>
 

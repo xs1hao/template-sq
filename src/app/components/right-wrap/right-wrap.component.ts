@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 // import { EventEmitter } from 'protractor';
+import {cloneDeep} from 'lodash';
 
 @Component({
   selector: 'app-right-wrap',
@@ -14,6 +15,12 @@ export class RightWrapComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(changes:SimpleChanges){
+    if(changes.listOfData){
+      this.listOfData = cloneDeep(this.listOfData);
+    }
   }
 
   innerDrop(e) {

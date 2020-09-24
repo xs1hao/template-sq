@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-
+import {cloneDeep} from 'lodash';
 @Component({
   selector: 'todo',
   templateUrl: './todo.component.html',
@@ -18,48 +18,38 @@ export class TodoComponent {
     'Wash dishes'
   ];
 
-  listOfData1 = [
+  listOfData1: any = [
     {
       key: '1',
-      name: 'John Brown',
-      age: 32,
+      name: '小花',
+      age: 'aaaaa',
       address: 'New York No. 1 Lake Park'
     },
     {
       key: '2',
-      name: 'Jim Green',
-      age: 42,
+      name: '旺财',
+      age: 'bbbbb',
       address: 'London No. 1 Lake Park'
     },
     {
       key: '3',
-      name: 'Joe Black',
-      age: 32,
+      name: '二蛋',
+      age: '55555',
       address: 'Sidney No. 1 Lake Park'
     }
   ];
-  listOfData2 = [
+  listOfData2: any = [
     {
       key: '4',
       name: '11111',
       age: 32,
       address: 'New York No. 1 Lake Park'
-    },
-    {
-      key: '5',
-      name: '22222',
-      age: 42,
-      address: 'London No. 1 Lake Park'
-    },
-    {
-      key: '6',
-      name: '33333',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park'
     }
   ];
   drop(event: CdkDragDrop<string[]>) {
     console.log(event);
+
+
 
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -69,5 +59,24 @@ export class TodoComponent {
                         event.previousIndex,
                         event.currentIndex);
     }
+    if (event.container.id === event.previousContainer.id){
+      if(event.container.id == 'right'){
+        this.listOfData2 = cloneDeep(event.container.data);
+      }else{
+        this.listOfData1 = cloneDeep(event.container.data);
+      }
+    } else {
+      if (event.container.id == 'right'){ // 数据进入的容器是右侧的表格；
+        this.listOfData2 = cloneDeep(event.container.data);
+        this.listOfData1 = cloneDeep(event.previousContainer.data);
+      } else {
+        this.listOfData1 = cloneDeep(event.container.data);
+        this.listOfData2 = cloneDeep(event.previousContainer.data);
+      }
+    }
+
+    console.log(this.listOfData1);
+    console.log(this.listOfData2);
+
   }
 }
