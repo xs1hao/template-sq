@@ -46,35 +46,7 @@ export class TodoComponent {
       address: 'New York No. 1 Lake Park'
     }
   ];
-  drop(event: CdkDragDrop<string[]>) {
-    console.log(event);
-
-
-
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
-    }
-    if (event.container.id === event.previousContainer.id){
-      if(event.container.id == 'right'){
-        this.listOfData2 = cloneDeep(event.container.data);
-      }else{
-        this.listOfData1 = cloneDeep(event.container.data);
-      }
-    } else {
-      if (event.container.id == 'right'){ // 数据进入的容器是右侧的表格；
-        this.listOfData2 = cloneDeep(event.container.data);
-        this.listOfData1 = cloneDeep(event.previousContainer.data);
-      } else {
-        this.listOfData1 = cloneDeep(event.container.data);
-        this.listOfData2 = cloneDeep(event.previousContainer.data);
-      }
-    }
-
+  drop() {
     console.log(this.listOfData1);
     console.log(this.listOfData2);
 

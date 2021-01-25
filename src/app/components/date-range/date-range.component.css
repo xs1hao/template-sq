@@ -1,0 +1,12 @@
+.date-range{
+  margin: 100px;
+}
+::ng-deep .sq-date .ant-calendar-input-wrap{
+  display: none;
+}
+
+
+nz-range-picker,
+nz-week-picker {
+  margin: 0 8px 12px 0;
+}

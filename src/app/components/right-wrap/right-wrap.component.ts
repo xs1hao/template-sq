@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 // import { EventEmitter } from 'protractor';
 import {cloneDeep} from 'lodash';
@@ -23,8 +24,18 @@ export class RightWrapComponent implements OnInit {
     }
   }
 
-  innerDrop(e) {
-    this.drop.emit(e)
+
+  innerDrop(event: CdkDragDrop<string[]>) {
+    console.log(event);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+                        event.container.data,
+                        event.previousIndex,
+                        event.currentIndex);
+    }
+    this.drop.emit()
   }
 
 }

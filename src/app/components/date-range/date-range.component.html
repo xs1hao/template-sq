@@ -1,0 +1,13 @@
+<div class="date-range">
+  <!-- <nz-range-picker [nzSize]="'default'"></nz-range-picker>
+  <br>
+  <br>
+  <br>
+  <br> -->
+  <nz-range-picker [nzShowTime]="false"
+    [(ngModel)]="date"
+    [nzDropdownClassName]="'sq-date'"
+    [nzOpen]="true"
+    (ngModelChange)="onChange($event)">
+  </nz-range-picker>
+</div>
